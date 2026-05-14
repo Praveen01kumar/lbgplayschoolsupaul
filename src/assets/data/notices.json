@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "title": "Annual Sports Day Registration Open",
+    "date": "2026-05-10",
+    "category": "Sports",
+    "content": "Registration for the Annual Sports Day 2026 is now open. Students from all grades can participate in various track and field events. Last date for registration is May 25, 2026.",
+    "important": true
+  },
+  {
+    "id": 2,
+    "title": "Summer Vacation Schedule 2026",
+    "date": "2026-05-08",
+    "category": "Academic",
+    "content": "Summer vacation will commence from June 1, 2026 and school will reopen on July 10, 2026. All pending assignments should be submitted before May 28.",
+    "important": true
+  },
+  {
+    "id": 3,
+    "title": "Parent-Teacher Meeting - Grade 9 & 10",
+    "date": "2026-05-05",
+    "category": "Meeting",
+    "content": "A parent-teacher meeting for grades 9 and 10 is scheduled for May 18, 2026 from 9:00 AM to 1:00 PM. Parents are requested to attend without fail.",
+    "important": false
+  },
+  {
+    "id": 4,
+    "title": "Science Exhibition 2026",
+    "date": "2026-05-03",
+    "category": "Academic",
+    "content": "The annual Science Exhibition will be held on May 22, 2026. Students are encouraged to prepare innovative projects. Registration deadline is May 15.",
+    "important": false
+  },
+  {
+    "id": 5,
+    "title": "New Library Books Arrival",
+    "date": "2026-04-28",
+    "category": "General",
+    "content": "Over 500 new books across various genres have been added to our school library. Students can now borrow from the new collection starting May 5.",
+    "important": false
+  },
+  {
+    "id": 6,
+    "title": "Admission Open for 2026-27 Session",
+    "date": "2026-04-25",
+    "category": "Admission",
+    "content": "Admissions for the academic session 2026-27 are now open for all grades. Visit the admissions office or apply online through our website.",
+    "important": true
+  },
+  {
+    "id": 7,
+    "title": "Inter-School Debate Competition Results",
+    "date": "2026-04-20",
+    "category": "Achievement",
+    "content": "Our students secured first and third positions in the Inter-School Debate Competition held at City Convention Center. Congratulations to all participants!",
+    "important": false
+  },
+  {
+    "id": 8,
+    "title": "Bus Route Changes - Effective May 2026",
+    "date": "2026-04-18",
+    "category": "Transport",
+    "content": "Some bus routes will be modified effective May 1, 2026. Please check the updated route map available at the school office or on the parent portal.",
+    "important": false
+  }
+]

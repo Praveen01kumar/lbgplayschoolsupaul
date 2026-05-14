@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Arun & Meena Kapoor",
+    "role": "Parents of Aryan, Grade 10",
+    "quote": "Greenfield International Academy has been a second home for our son. The teachers are incredibly dedicated, and the school's focus on holistic development is truly commendable. We've seen Aryan grow not just academically but as a confident young individual.",
+    "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Shalini Verma",
+    "role": "Parent of Ananya, Grade 7",
+    "quote": "The supportive environment at Greenfield is exceptional. My daughter has flourished here, discovering her passion for science and arts. The school's extracurricular programs are diverse and enriching.",
+    "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "name": "Rahul Gupta",
+    "role": "Alumni, Class of 2020",
+    "quote": "My years at Greenfield shaped who I am today. The values instilled in me, the critical thinking skills developed, and the friendships made have all been instrumental in my success at university and beyond.",
+    "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face",
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "name": "Dr. Priyanka Shah",
+    "role": "Parent of Rohan, Grade 12",
+    "quote": "As a doctor, I appreciate the school's emphasis on discipline and time management alongside academics. The career counseling program helped Rohan make an informed decision about his future path.",
+    "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face",
+    "rating": 4
+  },
+  {
+    "id": 5,
+    "name": "Amit & Sunita Joshi",
+    "role": "Parents of Ishaan, Grade 5",
+    "quote": "We moved to this city specifically so our son could attend Greenfield. The school's infrastructure, safety measures, and quality of education are outstanding. Our child looks forward to going to school every day!",
+    "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face",
+    "rating": 5
+  }
+]

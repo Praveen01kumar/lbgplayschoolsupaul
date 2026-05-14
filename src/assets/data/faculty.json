@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Ananya Sharma",
+    "designation": "Principal",
+    "department": "Administration",
+    "qualification": "Ph.D. in Education, M.Ed., B.Ed.",
+    "experience": "25 years",
+    "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    "bio": "A visionary leader with over 25 years of experience in educational administration and curriculum development."
+  },
+  {
+    "id": 2,
+    "name": "Mr. Rajesh Kumar",
+    "designation": "Vice Principal",
+    "department": "Administration",
+    "qualification": "M.A. English, B.Ed.",
+    "experience": "20 years",
+    "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    "bio": "Dedicated to fostering academic excellence and maintaining the highest standards of educational practice."
+  },
+  {
+    "id": 3,
+    "name": "Ms. Priya Patel",
+    "designation": "Head of Science",
+    "department": "Science",
+    "qualification": "M.Sc. Physics, B.Ed.",
+    "experience": "15 years",
+    "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+    "bio": "Passionate about making science accessible and exciting for all students through innovative teaching methods."
+  },
+  {
+    "id": 4,
+    "name": "Mr. David Wilson",
+    "designation": "Head of Mathematics",
+    "department": "Mathematics",
+    "qualification": "M.Sc. Mathematics, M.Phil.",
+    "experience": "18 years",
+    "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    "bio": "Expert in developing problem-solving skills and mathematical thinking among students."
+  },
+  {
+    "id": 5,
+    "name": "Ms. Sarah Johnson",
+    "designation": "Head of English",
+    "department": "English",
+    "qualification": "M.A. English Literature, CELTA",
+    "experience": "12 years",
+    "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+    "bio": "Committed to nurturing a love for language and literature through creative and communicative teaching approaches."
+  },
+  {
+    "id": 6,
+    "name": "Mr. Arjun Mehta",
+    "designation": "Head of Computer Science",
+    "department": "Computer Science",
+    "qualification": "M.Tech. Computer Science, B.Ed.",
+    "experience": "10 years",
+    "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
+    "bio": "Pioneering digital education and coding curriculum to prepare students for the technology-driven future."
+  },
+  {
+    "id": 7,
+    "name": "Ms. Kavita Rao",
+    "designation": "Head of Social Studies",
+    "department": "Social Studies",
+    "qualification": "M.A. History, B.Ed.",
+    "experience": "14 years",
+    "photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&crop=face",
+    "bio": "Inspiring global citizenship and critical thinking through engaging social studies programs."
+  },
+  {
+    "id": 8,
+    "name": "Mr. Vikram Singh",
+    "designation": "Head of Physical Education",
+    "department": "Sports",
+    "qualification": "M.P.Ed., National Level Athlete",
+    "experience": "16 years",
+    "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&crop=face",
+    "bio": "Dedicated to promoting sportsmanship, fitness, and holistic physical development among students."
+  },
+  {
+    "id": 9,
+    "name": "Ms. Meera Krishnan",
+    "designation": "Head of Arts",
+    "department": "Arts",
+    "qualification": "M.F.A., Diploma in Fine Arts",
+    "experience": "11 years",
+    "photo": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop&crop=face",
+    "bio": "Nurturing creativity and artistic expression through diverse art forms and innovative pedagogy."
+  },
+  {
+    "id": 10,
+    "name": "Dr. Suresh Nair",
+    "designation": "Head of Biology",
+    "department": "Science",
+    "qualification": "Ph.D. in Molecular Biology, B.Ed.",
+    "experience": "13 years",
+    "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
+    "bio": "Bringing cutting-edge biological research into the classroom to inspire the next generation of scientists."
+  }
+]

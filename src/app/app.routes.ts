@@ -1,0 +1,87 @@
+import { Routes } from '@angular/router';
+import { MainLayoutComponent } from './layouts/layout.component';
+
+export const routes: Routes = [
+  {
+    path: '',
+    component: MainLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
+        data: {
+          title: 'Home',
+          description: 'Welcome to Greenfield International Academy - A premier institution committed to academic excellence, holistic development, and nurturing future leaders since 1995.'
+        }
+      },
+      {
+        path: 'about',
+        loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent),
+        data: {
+          title: 'About Us',
+          description: 'Learn about Greenfield International Academy\'s rich history, vision, mission, campus, and values that have shaped excellence in education since 1995.'
+        }
+      },
+      {
+        path: 'admissions',
+        loadComponent: () => import('./pages/admissions/admissions.component').then(m => m.AdmissionsComponent),
+        data: {
+          title: 'Admissions',
+          description: 'Apply for admission to Greenfield International Academy. Learn about our admission process, eligibility criteria, and fee structure.'
+        }
+      },
+      {
+        path: 'academics',
+        loadComponent: () => import('./pages/academics/academics.component').then(m => m.AcademicsComponent),
+        data: {
+          title: 'Academics',
+          description: 'Explore our comprehensive CBSE curriculum, innovative teaching methodology, and academic programs designed for holistic student development.'
+        }
+      },
+      {
+        path: 'faculty',
+        loadComponent: () => import('./pages/faculty/faculty.component').then(m => m.FacultyComponent),
+        data: {
+          title: 'Our Faculty',
+          description: 'Meet our dedicated and experienced faculty members who inspire and guide students toward academic excellence.'
+        }
+      },
+      {
+        path: 'gallery',
+        loadComponent: () => import('./pages/gallery/gallery.component').then(m => m.GalleryComponent),
+        data: {
+          title: 'Gallery',
+          description: 'Browse through photos of our campus, events, sports activities, and cultural programs at Greenfield International Academy.'
+        }
+      },
+      {
+        path: 'events',
+        loadComponent: () => import('./pages/events/events.component').then(m => m.EventsComponent),
+        data: {
+          title: 'Events',
+          description: 'Stay updated with upcoming and past events at Greenfield International Academy including sports, cultural festivals, and academic programs.'
+        }
+      },
+      {
+        path: 'notices',
+        loadComponent: () => import('./pages/notices/notices.component').then(m => m.NoticesComponent),
+        data: {
+          title: 'Notices',
+          description: 'View the latest notices and announcements from Greenfield International Academy.'
+        }
+      },
+      {
+        path: 'contact',
+        loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactComponent),
+        data: {
+          title: 'Contact Us',
+          description: 'Get in touch with Greenfield International Academy. Find our address, phone numbers, email, and send us a message.'
+        }
+      },
+      {
+        path: '**',
+        redirectTo: ''
+      }
+    ]
+  }
+];

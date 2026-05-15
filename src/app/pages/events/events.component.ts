@@ -1,19 +1,23 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, inject, signal, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { firstValueFrom } from 'rxjs';
 import { SeoService } from '../../core/services/seo.service';
 import { DataService } from '../../core/services/data.service';
 import { ScrollService } from '../../core/services/scroll.service';
 import { SectionHeadingComponent } from '../../shared/section-heading/section-heading.component';
 import { SchoolEvent } from '../../models/event.model';
+import { EVENTS_CONTENT } from '../../shared/constants';
 
 @Component({
   selector: 'app-events',
   standalone: true,
   imports: [CommonModule, SectionHeadingComponent],
   template: `
-    <section class="page-banner"><h1 class="font-heading">Events</h1><p>Stay updated with our exciting school events</p></section>
+    <section class="page-banner">
+      <h1 class="font-heading">{{ content.BANNER.TITLE }}</h1>
+      <p>{{ content.BANNER.SUBTITLE }}</p>
+    </section>
 
-    <!-- Featured Event Countdown -->
     @if (featuredEvent()) {
       <section class="section-padding bg-light">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,7 +25,9 @@ import { SchoolEvent } from '../../models/event.model';
             <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
             <div class="relative grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <span class="inline-block px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-semibold mb-4">⭐ Featured Event</span>
+                <span class="inline-block px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-semibold mb-4">
+                  {{ content.FEATURED_LABEL }}
+                </span>
                 <h2 class="text-2xl md:text-3xl font-bold font-heading mb-3">{{ featuredEvent()!.title }}</h2>
                 <p class="text-white/80 text-sm mb-4">{{ featuredEvent()!.description }}</p>
                 <div class="flex items-center gap-4 text-sm text-white/70">
@@ -44,10 +50,13 @@ import { SchoolEvent } from '../../models/event.model';
       </section>
     }
 
-    <!-- All Events -->
     <section class="section-padding">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <app-section-heading title="All Events" subtitle="Calendar" description="Browse our upcoming and recent events" />
+        <app-section-heading 
+          [title]="content.CALENDAR_HEADER.TITLE" 
+          [subtitle]="content.CALENDAR_HEADER.SUBTITLE" 
+          [description]="content.CALENDAR_HEADER.DESC" 
+        />
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           @for (event of events(); track event.id) {
@@ -87,33 +96,35 @@ export class EventsComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly scroll = inject(ScrollService);
   private readonly platformId = inject(PLATFORM_ID);
 
-  events = signal<SchoolEvent[]>([]);
-  featuredEvent = signal<SchoolEvent | null>(null);
-  countdownUnits = signal<{label: string; value: number}[]>([]);
+  readonly content = EVENTS_CONTENT;
+  readonly events = signal<SchoolEvent[]>([]);
+  readonly featuredEvent = signal<SchoolEvent | null>(null);
+  readonly countdownUnits = signal<{ label: string; value: number }[]>([]);
 
-  ngOnInit(): void {
-    this.seo.updatePageMeta({ title: 'Events', description: 'Upcoming events at Greenfield International Academy.', canonicalPath: '/events' });
-    this.data.getEvents().subscribe(events => {
-      this.events.set(events);
-      const featured = events.find(e => e.featured);
-      if (featured) {
-        this.featuredEvent.set(featured);
-        this.updateCountdown(featured.date);
-      }
+  async ngOnInit(): Promise<void> {
+    this.seo.updatePageMeta({
+      title: this.content.SEO.TITLE,
+      description: this.content.SEO.DESCRIPTION,
+      canonicalPath: this.content.SEO.PATH
     });
+
+    const events = await firstValueFrom(this.data.getEvents());
+    this.events.set(events);
+    const featured = events.find(e => e.featured);
+    if (featured) {
+      this.featuredEvent.set(featured);
+      this.updateCountdown(featured.date);
+    }
   }
 
   private updateCountdown(dateStr: string): void {
     const target = new Date(dateStr).getTime();
     const now = new Date().getTime();
     const diff = Math.max(0, target - now);
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     this.countdownUnits.set([
-      { label: 'Days', value: days },
-      { label: 'Hours', value: hours },
-      { label: 'Minutes', value: minutes }
+      { label: 'Days', value: Math.floor(diff / (1000 * 60 * 60 * 24)) },
+      { label: 'Hours', value: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) },
+      { label: 'Minutes', value: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)) }
     ]);
   }
 
@@ -121,6 +132,13 @@ export class EventsComponent implements OnInit, AfterViewInit, OnDestroy {
   getMonth(d: string): string { return new Date(d).toLocaleString('en', { month: 'short' }); }
   getYear(d: string): string { return new Date(d).getFullYear().toString(); }
 
-  ngAfterViewInit(): void { if (isPlatformBrowser(this.platformId)) setTimeout(() => this.scroll.initScrollReveal(), 100); }
-  ngOnDestroy(): void { this.scroll.destroy(); }
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      setTimeout(() => this.scroll.initScrollReveal(), 100);
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.scroll.destroy();
+  }
 }

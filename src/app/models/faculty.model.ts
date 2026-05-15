@@ -6,5 +6,9 @@ export interface FacultyMember {
   qualification: string;
   experience: string;
   photo: string;
-  bio: string;
+  email?: string;
+  socialLinks?: {
+    linkedin?: string;
+    twitter?: string;
+  };
 }

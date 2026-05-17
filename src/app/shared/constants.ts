@@ -2,14 +2,14 @@ export const HEADER_CONTENT = {
   HEADER_ARIA_LABEL: 'Website Header',
   ANNOUNCEMENTS: [
     '📢 Admissions Open for 2026-27 Session — Apply Now!',
-    '🏆 Our students secured top positions in National Science Olympiad!',
-    '📅 Annual Sports Day on June 15, 2026 — Register Today!',
-    '📚 New Library Wing inaugurated with 10,000+ books',
-    'School announcements ticker',
+    '🎨 Play-based learning with fun activities and holistic development',
+    '📚 Stress-free and non-formal education for early childhood learning',
+    '🎉 Celebrating cultural festivals and activity-based learning every month',
+    '🥗 Healthy weekly diet plan for students',
   ],
   BRAND: {
-    NAME: 'Little Buds Garden',
-    TAGLINE: 'Play School',
+    NAME: 'Little Buds Garden Play School',
+    TAGLINE: 'A Unique Philosophy of Balance Schooling',
     LOGO_ALT: 'Little Buds Garden Play School Logo',
     HOME_ARIA_LABEL: 'Navigate to Little Buds Garden Play School homepage',
     ARIA_LABEL: 'Main navigation',
@@ -138,22 +138,22 @@ export const CONTACT_CONTENT = {
       {
         icon: '📍',
         title: 'Our Location',
-        details: ['123 Education Lane, Knowledge Park', 'Muzaffarpur, Bihar, India',],
+        details: ['Ward No. 15', 'Supaul, Bihar, India'],
         actionText: 'View on Google Maps',
         link: 'https://maps.google.com',
       },
       {
         icon: '📞',
         title: 'Phone & Email',
-        details: ['+91 98765 43210', '+91 7979886019', 'singhpratibha76@gmail.com',],
+        details: ['+91 7979886019', 'singhpratibha76@gmail.com'],
         actionText: 'Call Now',
-        link: 'tel:+919876543210',
+        link: 'tel:+917979886019',
       },
       {
         icon: '⏰',
-        title: 'Office Hours',
-        details: ['Mon - Fri: 8:00 AM - 4:00 PM', 'Sat: 8:00 AM - 1:00 PM', 'Sun: Closed',],
-        actionText: 'Book Appointment',
+        title: 'School Hours',
+        details: ['Apr - Oct: 8:00 AM - 12:30 PM', 'Nov - Mar: 9:00 AM - 1:30 PM', 'Sunday: Closed',],
+        actionText: 'Admission Inquiry',
         link: '/admissions',
       },
     ],
@@ -178,11 +178,11 @@ export const CONTACT_CONTENT = {
     MAP_URL: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.447545674067!2d85.3741!3d26.1209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDA3JzE1LjIiTiA4NcKwMjInMjYuOCJF!5e0!3m2!1sen!2sin!4v1625000000000!5m2!1sen!2sin',
   },
   EMERGENCY: {
-    TITLE: 'Emergency Contacts',
-    SECURITY_LABEL: 'Security Desk',
-    SECURITY_NUMBER: '+91 98765 43211',
-    MEDICAL_LABEL: 'Medical Room',
-    MEDICAL_NUMBER: '+91 98765 43212',
+    TITLE: 'School Contacts',
+    SECURITY_LABEL: 'Admission Office',
+    SECURITY_NUMBER: '+91 7979886019',
+    MEDICAL_LABEL: 'Email',
+    MEDICAL_NUMBER: 'singhpratibha76@gmail.com',
   },
 
 } as const;
@@ -278,17 +278,17 @@ export const EVENTS_CONTENT = {
 export const HOME_CONTENT = {
   SEO: {
     TITLE: 'Home',
-    DESCRIPTION: 'Little Buds Garden Play School - A premier institution committed to academic excellence, holistic development, and nurturing future leaders since 1995.',
-    KEYWORDS: 'school, education, academy, CBSE, admissions, international school',
+    DESCRIPTION: 'Little Buds Garden Play School - Play-based preschool focused on holistic child development, creativity, culture, and stress-free education in Supaul.',
+    KEYWORDS: 'play school, preschool, supaul school, kindergarten, nursery school, child development, play based learning',
     PATH: '/',
   },
   SCHEMA: {
     NAME: 'Little Buds Garden Play School',
     URL: 'https://littlebudsgardenplayschool.in',
-    PHONE: '+919876543210',
-    STREET: '123 Education Lane, Knowledge Park',
-    CITY: 'City',
-    POSTAL_CODE: '110001',
+    PHONE: '+917979886019',
+    STREET: 'Ward No. 15',
+    CITY: 'Supaul',
+    POSTAL_CODE: '',
     COUNTRY: 'IN',
     FOUNDED: '1995',
   },
@@ -296,8 +296,8 @@ export const HOME_CONTENT = {
     AREA_LABEL: 'Hero',
     BG_IMAGE: 'assets/image/1.webp',
     BADGE: '🏫 Admissions Open for 2026-27',
-    TITLE_START: 'Nurturing Minds, Shaping Futures',
-    DESCRIPTION: 'At Little Buds Garden Play School, we cultivate academic excellence, creativity, and character to prepare students for the challenges of tomorrow.',
+    TITLE_START: 'Fun Learning for Bright Little Minds',
+    DESCRIPTION: 'A play-based preschool in Supaul focused on holistic child development through creativity, culture, activities, and stress-free learning.',
     ACTION_BTN: {
       APPLY: 'Apply for Admission',
       EXPLORE: 'Explore Our School',
@@ -317,10 +317,10 @@ export const HOME_CONTENT = {
   ABOUT: {
     BADGE: 'About Us',
     AREA_LABEL: 'School introduction',
-    TITLE_START: '30 Years of Academic Excellence',
-    DESC_1: 'Since 1995, Little Buds Garden Play School has been a beacon of quality education. We believe in nurturing the whole child — mind, body, and spirit — through innovative teaching methods, state-of-the-art facilities, and a caring community.',
-    DESC_2: 'Our CBSE-affiliated curriculum, combined with a strong emphasis on extracurricular activities, ensures that every student develops the skills, knowledge, and values needed to thrive in a rapidly changing world.',
-    FEATURES: ['CBSE Affiliated', 'Smart Classrooms', '15 Acre Campus', '100% Results',],
+    TITLE_START: 'A Caring Preschool for Early Childhood Development',
+    DESC_1: 'Little Buds Garden Play School provides a joyful and activity-based learning environment where children learn through play, creativity, storytelling, games, rhymes, and interactive activities.',
+    DESC_2: 'We focus on the mental, physical, emotional, spiritual, cognitive, and social development of every child while promoting Indian culture, ethics, confidence, and discipline in a stress-free environment.',
+    FEATURES: ['Play-Way Learning', 'Holistic Development', 'Activity-Based Education', 'Stress-Free Environment',],
     IMAGE: 'assets/image/2.webp',
     IMAGE_ALT: 'Students learning in a modern classroom',
     YEARS: '30+',
@@ -329,21 +329,21 @@ export const HOME_CONTENT = {
   },
   STATS: {
     STAT: [
-      { value: 2500, label: 'Students Enrolled' },
-      { value: 150, label: 'Expert Teachers' },
       { value: 30, label: 'Years of Excellence' },
-      { value: 200, label: 'Awards Won' },
+      { value: 100, label: 'Activity-Based Sessions' },
+      { value: 15, label: 'Cultural Celebrations' },
+      { value: 3, label: 'Years Admission Age' },
     ],
     AREA_LABEL: 'Statistics',
   },
   PRINCIPAL: {
     BADGE: "Principal's Desk",
     TITLE_START: 'A Message from Our Principal',
-    QUOTE: 'Education is not merely about filling minds with information — it is about igniting the spark of curiosity, building character, and empowering young people to create a better world.',
-    DESC_1: 'Welcome to Little Buds Garden Play School. With over 25 years of experience in education, I am committed to ensuring that every child who walks through our doors receives the best possible education in a nurturing environment.',
-    DESC_2: 'Our dedicated faculty, modern infrastructure, and innovative curriculum work together to provide a learning experience that prepares students not just for exams, but for life.',
-    NAME: 'Dr. Ananya Sharma',
-    ROLE: 'Principal, GIA',
+    QUOTE: 'Children learn best when they are happy, confident, and engaged in fun-filled activities.',
+    DESC_1: 'At Little Buds Garden Play School, we believe every child deserves a nurturing environment filled with love, care, creativity, and joyful learning experiences.',
+    DESC_2: 'Our goal is to build a strong educational foundation through play-based methods, cultural learning, and overall personality development.',
+    NAME: 'Pratibha Singh',
+    ROLE: 'Founder & Educator',
     IMAGE: 'assets/image/faculty.webp',
     AREA_LABEL: `Principal's message`,
   },
@@ -354,34 +354,34 @@ export const HOME_CONTENT = {
     AREA_LABEL: 'Achievements',
     ACHIEVEMENT_LIST: [
       {
-        icon: '🏆',
-        title: '100% Board Results',
-        description: 'Consistently achieving 100% pass rate in CBSE board examinations for the past 10 years.',
-      },
-      {
-        icon: '🥇',
-        title: 'National Science Olympiad',
-        description: 'Our students secured top 10 positions in the National Science Olympiad three years running.',
-      },
-      {
-        icon: '⚽',
-        title: 'State Sports Champions',
-        description: 'Winners of the State-Level Inter-School Sports Championship in cricket, basketball, and athletics.',
-      },
-      {
         icon: '🎨',
-        title: 'INTACH Heritage Award',
-        description: 'Recognized by INTACH for outstanding contributions to heritage awareness and conservation education.',
-      },
-      {
-        icon: '💻',
-        title: 'Digital Innovation Award',
-        description: 'Awarded for pioneering STEAM education and robotics curriculum in the region.',
+        title: 'Play-Based Learning',
+        description: 'Interactive learning through storytelling, rhymes, games, puzzles, and creative activities.',
       },
       {
         icon: '🌱',
-        title: 'Green School Certification',
-        description: 'Certified as an eco-friendly campus with sustainable practices and environmental education programs.',
+        title: 'Holistic Development',
+        description: 'Focus on emotional, mental, physical, spiritual, and social growth of children.',
+      },
+      {
+        icon: '🎭',
+        title: 'Cultural Education',
+        description: 'Celebrating Indian festivals and teaching cultural values with ethics and discipline.',
+      },
+      {
+        icon: '📚',
+        title: 'Stress-Free Education',
+        description: 'Non-formal and child-friendly education system designed for happy learning.',
+      },
+      {
+        icon: '🧩',
+        title: 'Creative Activities',
+        description: 'Activities including clay modeling, paper folding, fancy dress, painting, and puzzles.',
+      },
+      {
+        icon: '🥗',
+        title: 'Healthy Food Habits',
+        description: 'Weekly diet plans encouraging healthy eating and avoiding fast food habits.',
       },
     ],
   },
@@ -406,25 +406,25 @@ export const HOME_CONTENT = {
     TESTIMONIALS_LIST: [
       {
         id: 1,
-        name: 'Arun & Meena Kapoor',
-        role: 'Parents of Aryan, Grade 10',
-        quote: "Little Buds Garden Play School has been a second home for our son. The teachers are incredibly dedicated, and the school's focus on holistic development is truly commendable. We've seen Aryan grow not just academically but as a confident young individual.",
+        name: 'Parent Review',
+        role: 'Parent of Nursery Student',
+        quote: 'The school provides a loving and caring environment where children learn happily through games and activities.',
         photo: 'assets/image/profile.webp',
         rating: 5,
       },
       {
         id: 2,
-        name: 'Shalini Verma',
-        role: 'Parent of Ananya, Grade 7',
-        quote: "The supportive environment at Little Buds Garden Play School is exceptional. My daughter has flourished here, discovering her passion for science and arts. The school's extracurricular programs are diverse and enriching.",
+        name: 'Parent Review',
+        role: 'Parent of KG Student',
+        quote: 'We appreciate the focus on discipline, creativity, and cultural values along with quality preschool education.',
         photo: 'assets/image/profile.webp',
         rating: 5,
       },
       {
         id: 3,
-        name: 'Rahul Gupta',
-        role: 'Alumni, Class of 2020',
-        quote: 'My years at Little Buds Garden Play School shaped who I am today. The values instilled in me, the critical thinking skills developed, and the friendships made have all been instrumental in my success at university and beyond.',
+        name: 'Parent Review',
+        role: 'Parent of Play Group Student',
+        quote: 'Our child enjoys storytelling, rhymes, painting, and play-way learning every day at school.',
         photo: 'assets/image/profile.webp',
         rating: 5,
       },
@@ -432,8 +432,8 @@ export const HOME_CONTENT = {
   },
 
   CTA: {
-    TITLE: 'Ready to Join Our Family?',
-    DESC: 'Give your child the gift of quality education. Admissions are now open for the 2026-27 academic session.',
+    TITLE: 'Start Your Child’s Learning Journey Today',
+    DESC: 'Admissions are open for children aged 3 years and above at Little Buds Garden Play School, Supaul.',
     AREA_LABEL: 'Call to action',
     ACTION_BTN: { Apply: 'Apply Now', Contact: 'Contact Us', Applyl: '/admissions', Contactl: '/contact', },
   },
@@ -442,8 +442,8 @@ export const HOME_CONTENT = {
 export const ABOUT_CONTENT = {
   SEO: {
     TITLE: 'About Us',
-    DESCRIPTION: "Learn about Little Buds Garden Play School's rich history, vision, mission, world-class campus, and values since 1995.",
-    KEYWORDS: 'about school, history, vision, mission, campus, facilities',
+    DESCRIPTION: 'Learn about Little Buds Garden Play School, a play-based preschool in Supaul focused on holistic child development and stress-free education.',
+    KEYWORDS: 'play school supaul, preschool, nursery school, holistic education, play-way learning',
     PATH: '/about',
   },
   BANNER: {
@@ -454,10 +454,10 @@ export const ABOUT_CONTENT = {
   STORY: {
     BADGE: 'Our Story',
     AREA_LABEL: 'School history',
-    TITLE_START: 'A Legacy Since 1995',
-    DESC_1: 'Little Buds Garden Play School was founded in 1995 by a group of visionary educators who believed that quality education should be accessible to all. What started as a small school with just 50 students and 5 teachers has now grown into a premier institution with over 2,500 students and 150 dedicated faculty members.',
-    DESC_2: 'Over three decades, we have continuously evolved our teaching methods, expanded our facilities, and embraced technology while staying true to our core values of integrity, excellence, and compassion.',
-    DESC_3: 'Today, Little Buds Garden Play School stands as a testament to what can be achieved when passion meets purpose — producing generations of confident, capable, and caring individuals who make a positive impact on the world.',
+    TITLE_START: 'A Unique Philosophy of Balance Schooling',
+    DESC_1: 'Little Buds Garden Play School is a preschool in Supaul dedicated to creating a joyful, safe, and activity-based learning environment for children.',
+    DESC_2: 'We believe children learn best when they are happy and engaged through storytelling, rhymes, games, discussions, puzzles, painting, and creative classroom activities.',
+    DESC_3: 'Our school promotes holistic child development through play-way learning methods, cultural values, creativity, confidence building, and stress-free education.',
     IMAGE: 'assets/image/3.webp',
     IMAGE_ALT: 'Little Buds Garden Play School campus aerial view',
   },
@@ -468,11 +468,11 @@ export const ABOUT_CONTENT = {
     AREA_LABEL: 'Vision and mission',
     VISION: {
       TITLE: 'Our Vision',
-      DESC: 'To be a globally recognized institution that nurtures innovative thinkers, compassionate leaders, and responsible citizens who are prepared to shape a sustainable and equitable future.',
+      DESC: 'To nurture confident, creative, disciplined, and happy children through balanced and activity-based education.',
     },
     MISSION: {
       TITLE: 'Our Mission',
-      DESC: 'To provide a holistic, inclusive, and stimulating learning environment that empowers students with knowledge, skills, and values to excel academically, grow personally, and contribute meaningfully to society.',
+      DESC: 'To provide a loving and caring environment where children develop mentally, physically, emotionally, spiritually, cognitively, and socially.',
     },
   },
   OUR_CAMPUS: {
@@ -482,50 +482,34 @@ export const ABOUT_CONTENT = {
     AREA_LABEL: 'Campus overview',
     FACILITIES: [
       {
-        icon: '🏫',
-        title: 'Smart Classrooms',
-        description: 'Air-conditioned classrooms equipped with interactive whiteboards, projectors, and digital learning tools.',
-      },
-      {
-        icon: '🔬',
-        title: 'Science Laboratories',
-        description: 'Fully equipped Physics, Chemistry, and Biology labs for hands-on learning and experimentation.',
-      },
-      {
-        icon: '💻',
-        title: 'Computer Labs',
-        description: 'State-of-the-art computer labs with high-speed internet and latest software for digital literacy.',
-      },
-      {
         icon: '📚',
-        title: 'Library',
-        description: 'A well-stocked library with over 15,000 books, digital resources, and a dedicated reading zone.',
-      },
-      {
-        icon: '🏊',
-        title: 'Swimming Pool',
-        description:
-          'Olympic-size swimming pool with trained instructors for swimming lessons and competitive training.',
-      },
-      {
-        icon: '⚽',
-        title: 'Sports Complex',
-        description: 'Multi-sport complex with cricket ground, basketball court, football field, and indoor games.',
-      },
-      {
-        icon: '🎭',
-        title: 'Auditorium',
-        description: '800-seat auditorium with professional sound and lighting for events and performances.',
+        title: 'Reading & Storytelling',
+        description: 'Interactive storytelling, reading activities, and rhymes for communication development.',
       },
       {
         icon: '🎨',
-        title: 'Art & Music Studio',
-        description: 'Dedicated studios for visual arts, music, and performing arts with professional equipment.',
+        title: 'Creative Activities',
+        description: 'Painting, paper folding, clay modeling, and pasting activities for creativity enhancement.',
       },
       {
-        icon: '🚌',
-        title: 'Transport',
-        description: 'GPS-enabled bus fleet covering major routes with trained drivers and attendants.',
+        icon: '🧩',
+        title: 'Puzzle & Block Games',
+        description: 'Jigsaw puzzles and building blocks for logical thinking and problem-solving skills.',
+      },
+      {
+        icon: '🎭',
+        title: 'Fancy Dress & Role Play',
+        description: 'Make-believe games and fancy dress activities to build confidence and imagination.',
+      },
+      {
+        icon: '🎶',
+        title: 'Rhymes & Discussions',
+        description: 'Fun group discussions and rhyme sessions for social and language development.',
+      },
+      {
+        icon: '❤️',
+        title: 'Love & Care Environment',
+        description: 'Safe, caring, and child-friendly atmosphere focused on happy learning.',
       },
     ],
   },
@@ -536,24 +520,24 @@ export const ABOUT_CONTENT = {
     AREA_LABEL: 'School values',
     VALUES_LIST: [
       {
-        icon: '⭐',
-        title: 'Excellence',
-        description: 'Striving for the highest standards in everything we do',
+        icon: '😊',
+        title: 'Happy Learning',
+        description: 'Children learn best through happiness, play, and engagement.',
       },
       {
         icon: '🤝',
-        title: 'Integrity',
-        description: 'Acting with honesty, fairness, and ethical responsibility',
+        title: 'Care & Respect',
+        description: 'We create a nurturing environment filled with love and care.',
       },
       {
-        icon: '💡',
-        title: 'Innovation',
-        description: 'Embracing creativity and forward-thinking approaches',
+        icon: '🎨',
+        title: 'Creativity',
+        description: 'Encouraging imagination and creativity through activities and play.',
       },
       {
-        icon: '❤️',
-        title: 'Compassion',
-        description: 'Fostering empathy, kindness, and respect for all',
+        icon: '🇮🇳',
+        title: 'Cultural Values',
+        description: 'Teaching Indian culture, ethics, discipline, and social values.',
       },
     ],
   },
@@ -723,12 +707,9 @@ export const ADMISSIONS_CONTENT = {
     SUBTITLE: 'Requirements',
     AREA_LABEL: 'Admission Eligibility',
     ELIGIBILITY_TABLE: [
+      { grade: 'Play Group', age: '3+ years', assessment: 'Informal Interaction' },
       { grade: 'Nursery', age: '3+ years', assessment: 'Informal Interaction' },
       { grade: 'KG', age: '4+ years', assessment: 'Informal Interaction' },
-      { grade: 'Grade 1', age: '6+ years', assessment: 'Written + Interaction' },
-      { grade: 'Grade 2-5', age: 'Age appropriate', assessment: 'Written (English, Math)', },
-      { grade: 'Grade 6-8', age: 'Age appropriate', assessment: 'Written (English, Math, Science)', },
-      { grade: 'Grade 9-12', age: 'Age appropriate', assessment: 'Written + Interview', },
     ],
   },
   PROSPECTUS: {
@@ -744,63 +725,33 @@ export const ADMISSIONS_CONTENT = {
     FAQ_LIST: [
       {
         id: 1,
-        question: 'What is the admission process?',
-        answer: 'The admission process involves submitting an application form, followed by an entrance assessment, parent interaction, and final selection. You can apply online through our website or visit the admissions office for offline registration.',
-        category: 'Process',
-      },
-      {
-        id: 2,
-        question: 'What are the age criteria for admission?',
-        answer: 'For Nursery, the child should be 3+ years old as of March 31 of the admission year. For Grade 1, the child should be 6+ years. Age criteria for other grades follow the standard academic norms set by the education board.',
+        question: 'What is the minimum age for admission?',
+        answer: 'Admission is available for children aged 3 years and above.',
         category: 'Eligibility',
       },
       {
-        id: 3,
+        id: 2,
         question: 'What documents are required for admission?',
-        answer: 'Required documents include: Birth certificate, Previous school transfer certificate, Report card of the last two years, Passport-size photographs (4), Aadhar card copy of the student and parents, Address proof, and Medical fitness certificate.',
+        answer: 'Required documents include birth certificate, two passport-size photographs of the child, Aadhaar card and one passport-size photograph of both parents.',
         category: 'Documents',
       },
       {
+        id: 3,
+        question: 'What are the school timings?',
+        answer: 'From April to October: 8:00 AM – 12:30 PM. From November to March: 9:00 AM – 1:30 PM.',
+        category: 'Timings',
+      },
+      {
         id: 4,
-        question: 'Is there an entrance test?',
-        answer: "Yes, an age-appropriate entrance assessment is conducted for all grades. For Nursery and KG, it's an informal interaction. For Grade 1 onwards, a written test in English and Mathematics is conducted along with a personal interview.",
-        category: 'Process',
-      },
-      {
-        id: 5,
-        question: 'What is the fee structure?',
-        answer: 'Fee structure varies by grade level. Please contact the admissions office or download our prospectus for detailed fee information. We offer sibling discounts and merit-based scholarships for eligible students.',
-        category: 'Fees',
-      },
-      {
-        id: 6,
-        question: 'Do you offer transportation?',
-        answer: 'Yes, we provide GPS-enabled bus transportation covering major routes across the city. Each bus is equipped with a first-aid kit, CCTV cameras, and is accompanied by a bus attendant for student safety.',
-        category: 'Facilities',
-      },
-      {
-        id: 7,
-        question: 'What curriculum does the school follow?',
-        answer: 'Little Buds Garden Play School follows the CBSE (Central Board of Secondary Education) curriculum with an integrated approach that includes international best practices, STEAM education, and skill-based learning.',
+        question: 'What teaching method does the school follow?',
+        answer: 'The school follows play-way and activity-based learning methods focused on holistic child development.',
         category: 'Academic',
       },
       {
-        id: 8,
-        question: 'Are there scholarships available?',
-        answer: 'Yes, we offer merit-based scholarships for students who excel academically or in sports and extracurricular activities. Need-based financial aid is also available. Please contact the admissions office for details.',
-        category: 'Fees',
-      },
-      {
-        id: 9,
-        question: 'What extracurricular activities are offered?',
-        answer: 'We offer a wide range of activities including sports (cricket, football, basketball, swimming), arts (music, dance, drama, visual arts), clubs (robotics, debate, environment, literary), and special programs (yoga, martial arts, coding).',
-        category: 'Facilities',
-      },
-      {
-        id: 10,
-        question: 'How can I schedule a campus visit?',
-        answer: 'Campus visits can be scheduled by calling our admissions office at +91 98765 43210 or by filling out the inquiry form on our website. Guided tours are conducted every Saturday between 10:00 AM and 1:00 PM.',
-        category: 'Process',
+        id: 5,
+        question: 'What activities are available for children?',
+        answer: 'Children participate in storytelling, rhymes, painting, clay modeling, puzzles, fancy dress, games, and cultural celebrations.',
+        category: 'Activities',
       },
     ],
   },
@@ -828,6 +779,22 @@ export const ADMISSIONS_CONTENT = {
       SUBMIT_BUTTON: 'Submit Inquiry',
     },
   },
+  
+  FEES: {
+  AREA_LABEL: 'Fee Structure Section',
+  TITLE: 'Fee Structure',
+  SUBTITLE: 'Transparent and affordable fee plans designed to provide quality education and holistic development.',
+  FOOTER_TEXT_1:'* Fee structure is subject to revision as per school policy.',
+  FOOTER_TEXT_2:'Transport & activity charges may apply separately.',
+  FEE_TABLE: [
+    { class: 'Nursery', admissionFee: '₹8,000', monthlyFee: '₹2,500', annualCharges: '₹5,000' },
+    { class: 'LKG', admissionFee: '₹8,000', monthlyFee: '₹2,700', annualCharges: '₹5,000' },
+    { class: 'UKG', admissionFee: '₹8,000', monthlyFee: '₹2,900', annualCharges: '₹5,500' },
+    { class: 'Class I - III', admissionFee: '₹10,000', monthlyFee: '₹3,200', annualCharges: '₹6,000' },
+    { class: 'Class IV - VI', admissionFee: '₹12,000', monthlyFee: '₹3,800', annualCharges: '₹7,500' },
+    { class: 'Class VII - X', admissionFee: '₹15,000', monthlyFee: '₹4,500', annualCharges: '₹9,000' }
+  ]
+},
 } as const;
 
 export const FACULTY_CONTENT = {
@@ -865,7 +832,7 @@ export const FACULTY_CONTENT = {
       department: 'Administration',
       qualification: 'Ph.D. in Education, M.Ed., B.Ed.',
       experience: '25 years',
-      photo:'assets/image/faculty.webp',
+      photo: 'assets/image/faculty.webp',
       bio: 'A visionary leader with over 25 years of experience in educational administration and curriculum development.',
     },
     {
@@ -875,7 +842,7 @@ export const FACULTY_CONTENT = {
       department: 'Administration',
       qualification: 'M.A. English, B.Ed.',
       experience: '20 years',
-      photo:'assets/image/faculty.webp',
+      photo: 'assets/image/faculty.webp',
       bio: 'Dedicated to fostering academic excellence and maintaining the highest standards of educational practice.',
     },
     {
@@ -885,7 +852,7 @@ export const FACULTY_CONTENT = {
       department: 'Science',
       qualification: 'M.Sc. Physics, B.Ed.',
       experience: '15 years',
-      photo:'assets/image/faculty.webp',
+      photo: 'assets/image/faculty.webp',
       bio: 'Passionate about making science accessible and exciting for all students through innovative teaching methods.',
     },
     {
@@ -895,7 +862,7 @@ export const FACULTY_CONTENT = {
       department: 'Mathematics',
       qualification: 'M.Sc. Mathematics, M.Phil.',
       experience: '18 years',
-      photo:'assets/image/faculty.webp',
+      photo: 'assets/image/faculty.webp',
       bio: 'Expert in developing problem-solving skills and mathematical thinking among students.',
     },
     {
@@ -905,7 +872,7 @@ export const FACULTY_CONTENT = {
       department: 'English',
       qualification: 'M.A. English Literature, CELTA',
       experience: '12 years',
-      photo:'assets/image/faculty.webp',
+      photo: 'assets/image/faculty.webp',
       bio: 'Committed to nurturing a love for language and literature through creative and communicative teaching approaches.',
     },
     {
@@ -915,7 +882,7 @@ export const FACULTY_CONTENT = {
       department: 'Computer Science',
       qualification: 'M.Tech. Computer Science, B.Ed.',
       experience: '10 years',
-      photo:'assets/image/faculty.webp',
+      photo: 'assets/image/faculty.webp',
       bio: 'Pioneering digital education and coding curriculum to prepare students for the technology-driven future.',
     },
     {
@@ -925,7 +892,7 @@ export const FACULTY_CONTENT = {
       department: 'Social Studies',
       qualification: 'M.A. History, B.Ed.',
       experience: '14 years',
-      photo:'assets/image/faculty.webp',
+      photo: 'assets/image/faculty.webp',
       bio: 'Inspiring global citizenship and critical thinking through engaging social studies programs.',
     },
     {
@@ -935,7 +902,7 @@ export const FACULTY_CONTENT = {
       department: 'Sports',
       qualification: 'M.P.Ed., National Level Athlete',
       experience: '16 years',
-      photo:'assets/image/faculty.webp',
+      photo: 'assets/image/faculty.webp',
       bio: 'Dedicated to promoting sportsmanship, fitness, and holistic physical development among students.',
     },
     {
@@ -945,7 +912,7 @@ export const FACULTY_CONTENT = {
       department: 'Arts',
       qualification: 'M.F.A., Diploma in Fine Arts',
       experience: '11 years',
-      photo:'assets/image/faculty.webp',
+      photo: 'assets/image/faculty.webp',
       bio: 'Nurturing creativity and artistic expression through diverse art forms and innovative pedagogy.',
     },
     {
@@ -955,7 +922,7 @@ export const FACULTY_CONTENT = {
       department: 'Science',
       qualification: 'Ph.D. in Molecular Biology, B.Ed.',
       experience: '13 years',
-      photo:'assets/image/faculty.webp',
+      photo: 'assets/image/faculty.webp',
       bio: 'Bringing cutting-edge biological research into the classroom to inspire the next generation of scientists.',
     },
   ],
@@ -1087,8 +1054,8 @@ export const GALLERY_CONTENT = {
 
 export const FOOTER_CONTENT = {
   BRAND: {
-    NAME: 'Little Buds Garden',
-    TAGLINE: 'Play School',
+    NAME: 'Little Buds Garden Play School',
+    TAGLINE: 'A Unique Philosophy of Balance Schooling',
     DESCRIPTION: 'A premier institution committed to academic excellence, holistic development, and nurturing future leaders since 1995.',
     LOGO_ALT: 'Little Buds Garden Play School Logo',
     AREA_LABEL: 'Website Footer'

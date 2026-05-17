@@ -36,30 +36,93 @@ import { ADMISSIONS_CONTENT } from '../../shared/constants';
     <section class="section-padding bg-[#eef4ff]" [attr.aria-label]="content.ELIGIBILITY.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <app-section-heading [title]="content.ELIGIBILITY.TITLE" [subtitle]="content.ELIGIBILITY.SUBTITLE" />
-        <div class="reveal max-w-4xl mx-auto bg-white rounded-2xl shadow-md overflow-hidden">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="bg-primary text-white">
-                <th class="px-6 py-4 text-left font-semibold">Grade</th>
-                <th class="px-6 py-4 text-left font-semibold">Age</th>
-                <th class="px-6 py-4 text-left font-semibold">Assessment</th>
-              </tr>
-            </thead>
+        <div class="reveal max-w-4xl mx-auto bg-white rounded-2xl shadow-md overflow-x-auto">
+         <table class="w-full min-w-[720px] text-sm md:text-base">
+          <thead>
+            <tr
+              class="bg-gradient-to-r border-b border-slate-100 from-primary to-primary/90 text-red-600 uppercase tracking-wide text-xs md:text-sm">
+              <th class="px-6 py-5 text-left font-semibold">Grade</th>
+              <th class="px-6 py-5 text-left font-semibold">Age Criteria</th>
+              <th class="px-6 py-5 text-left font-semibold">Assessment Process</th>
+            </tr>
+          </thead>
             <tbody>
-              @for (row of content.ELIGIBILITY.ELIGIBILITY_TABLE; track $index; let i = $index) {
-                <tr class="border-b border-gray-100 hover:bg-gray-50">
-                  <td class="px-6 py-4 font-medium text-dark">{{ row.grade }}</td>
-                  <td class="px-6 py-4 text-muted">{{ row.age }}</td>
-                  <td class="px-6 py-4 text-muted">{{ row.assessment }}</td>
-                </tr>
-              }
-            </tbody>
+            @for (row of content.ELIGIBILITY.ELIGIBILITY_TABLE; track $index; let i = $index) {
+              <tr class="group border-b border-slate-100 transition-all duration-300 hover:bg-primary/[0.03] hover:shadow-inner">
+                <td class="px-6 py-5">
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary font-bold shadow-sm">
+                      {{ i + 1 }}
+                    </div>
+                    <div>
+                      <p class="font-semibold text-dark text-base">
+                        {{ row.grade }}
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <span class="inline-flex items-center rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 ring-1 ring-blue-100">
+                    {{ row.age }}
+                  </span>
+                </td>
+                <td class="px-6 py-5 text-muted leading-relaxed">
+                  {{ row.assessment }}
+                </td>
+              </tr>
+            }
+          </tbody>
           </table>
         </div>
       </div>
     </section>
 
-    <section class="section-padding" [attr.aria-label]="content.PROSPECTUS.AREA_LABEL">
+    <section class="section-padding bg-white" [attr.aria-label]="content.FEES.AREA_LABEL">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <app-section-heading [title]="content.FEES.TITLE" [subtitle]="content.FEES.SUBTITLE" />
+        <div class="reveal mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[760px] text-sm md:text-base">
+              <thead>
+                <tr class="bg-gradient-to-r border-b border-slate-100 from-primary to-primary/90 text-red-600 uppercase tracking-wide text-xs md:text-sm">
+                  <th class="px-6 py-5 text-left font-semibold uppercase tracking-wide">Class</th>
+                  <th class="px-6 py-5 text-left font-semibold uppercase tracking-wide">Admission Fee</th>
+                  <th class="px-6 py-5 text-left font-semibold uppercase tracking-wide">Monthly Fee</th>
+                  <th class="px-6 py-5 text-left font-semibold uppercase tracking-wide">Annual Charges</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (fee of content.FEES.FEE_TABLE; track $index) {
+                  <tr class="border-b border-slate-100 transition-all duration-300 hover:bg-primary/[0.03]">
+                    <td class="px-6 py-5 font-semibold text-dark">
+                      {{ fee.class }}
+                    </td>
+                    <td class="px-6 py-5 text-muted">
+                      {{ fee.admissionFee }}
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="inline-flex items-center rounded-full bg-green-50 px-4 py-2 text-sm font-semibold text-green-700 ring-1 ring-green-100">
+                        {{ fee.monthlyFee }}
+                      </span>
+                    </td>
+                    <td class="px-6 py-5 text-muted">
+                      {{ fee.annualCharges }}
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+          <div class="flex flex-col gap-3 border-t border-slate-200 bg-slate-50 px-6 py-5 text-sm text-muted md:flex-row md:items-center md:justify-between">
+            <p>{{content.FEES.FOOTER_TEXT_1}}</p>
+            <p class="font-medium text-dark">{{content.FEES.FOOTER_TEXT_2}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-[#eef4ff]" [attr.aria-label]="content.PROSPECTUS.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="reveal gradient-primary rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden">
           <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
@@ -75,7 +138,7 @@ import { ADMISSIONS_CONTENT } from '../../shared/constants';
       </div>
     </section>
 
-    <section class="section-padding bg-[#eef4ff]" [attr.aria-label]="content.FAQS.AREA_LABEL">
+    <section class="section-padding" [attr.aria-label]="content.FAQS.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <app-section-heading [title]="content.FAQS.TITLE" [subtitle]="content.FAQS.SUBTITLE"/>
         <div class="max-w-3xl mx-auto space-y-4">
@@ -98,7 +161,7 @@ import { ADMISSIONS_CONTENT } from '../../shared/constants';
       </div>
     </section>
 
-    <section class="section-padding" [attr.aria-label]="content.INQUIRY.HEADER.AREA_LABEL">
+    <section class="section-padding bg-[#eef4ff]" [attr.aria-label]="content.INQUIRY.HEADER.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <app-section-heading [title]="content.INQUIRY.HEADER.TITLE" [subtitle]="content.INQUIRY.HEADER.SUBTITLE" />
         <div class="reveal max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-lg border border-gray-100">

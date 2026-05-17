@@ -40,7 +40,7 @@ import { HEADER_CONTENT } from '../constants';
               </a>
             }
             <a [routerLink]="content.APPLY_BUTTON.PATH" [attr.aria-label]="content.APPLY_BUTTON.ARIA_LABEL"
-              class="ml-2 px-5 py-2.5 bg-red-500/10 text-red-600 text-primary text-sm font-semibold rounded-lg hover:bg-accent-dark transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+              class="ml-2 px-5 py-2.5 bg-red-500/10 text-red-600 text-sm font-semibold rounded-lg hover:bg-accent-dark transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5">
               {{content.APPLY_BUTTON.LABEL}}
             </a>
           </div>
@@ -73,7 +73,7 @@ import { HEADER_CONTENT } from '../constants';
                 </a>
               }
               <a [routerLink]="content.APPLY_BUTTON.PATH" [attr.aria-label]="content.APPLY_BUTTON.ARIA_LABEL"
-                class="mx-4 mt-2 px-5 py-3 bg-accent text-white text-sm font-semibold rounded-lg text-center hover:bg-accent-dark transition-all"
+                class="mx-4 mt-2 px-5 py-3 bg-red-500/10 text-red-600 text-sm font-semibold rounded-lg text-center hover:bg-accent-dark transition-all"
                 (click)="closeMobileMenu()">
                 {{content.APPLY_BUTTON.LABEL}}
               </a>

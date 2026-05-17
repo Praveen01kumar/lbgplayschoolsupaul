@@ -23,7 +23,7 @@ import { HEADER_CONTENT } from '../constants';
           <!-- Logo -->
           <a routerLink="/" class="flex items-center gap-3 group" [attr.aria-label]="content.BRAND.HOME_ARIA_LABEL">
             <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
-              <img src="assets/image/logo.jpeg" class="rounded-xl" [alt]="content.BRAND.LOGO_ALT">
+              <img src="assets/image/logo.webp" class="rounded-xl" [alt]="content.BRAND.LOGO_ALT">
             </div>
             <div class="hidden sm:block">
               <h1 class="text-lg md:text-xl font-bold text-primary font-heading leading-tight">{{content.BRAND.NAME}}</h1>

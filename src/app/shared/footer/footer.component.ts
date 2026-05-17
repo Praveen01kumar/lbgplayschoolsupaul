@@ -15,7 +15,7 @@ import { FOOTER_CONTENT } from '../constants';
           <div>
             <div class="flex items-center gap-3 mb-5">
               <div class="w-12 h-12 rounded-xl gradient-accent flex items-center justify-center text-white font-bold text-xl shadow-md">
-               <img src="assets/image/logo.jpeg" class="rounded-xl" [alt]="content.BRAND.LOGO_ALT">
+               <img src="assets/image/logo.webp" class="rounded-xl" [alt]="content.BRAND.LOGO_ALT">
               </div>
               <div>
                 <h3 class="text-xl font-bold font-heading">{{content.BRAND.NAME}}</h3> 

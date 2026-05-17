@@ -4,8 +4,8 @@
 
 /* ===== Custom Theme ===== */
 :root {
-  --color-primary: #1e3a8a;
-  --color-primary-light: #3b82f6;
+  --color-primary: #18004c;
+  --color-primary-light: #2e6e7c;
   --color-primary-dark: #1e2d5f;
   --color-accent: #d4a843;
   --color-accent-light: #e8c56d;
@@ -17,7 +17,6 @@
   --color-muted-light: #94a3b8;
   --color-surface: #ffffff;
   --color-surface-alt: #f1f5f9;
-
   --font-heading: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -111,8 +110,8 @@ img {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 5px rgba(212, 168, 67, 0.4); }
-  50% { box-shadow: 0 0 20px rgba(212, 168, 67, 0.8); }
+  0%, 100% { box-shadow: 0 0 5px #d4a84366; }
+  50% { box-shadow: 0 0 20px #d4a843cc; }
 }
 
 @keyframes float {
@@ -194,10 +193,10 @@ img {
 
 /* ===== Glass Effect ===== */
 .glass {
-  background: rgba(255, 255, 255, 0.1);
+  background: #ffffff1a;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #ffffff33;
 }
 
 /* ===== Card Hover Effect ===== */
@@ -207,7 +206,7 @@ img {
 
 .card-hover:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px #0000001a;
 }
 
 /* ===== Skip to Content (Accessibility) ===== */
@@ -261,7 +260,7 @@ img {
 .page-banner {
   position: relative;
   padding: 6rem 1rem 4rem;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: linear-gradient(359deg, var(--color-primary-light) 0%, var(--color-primary-dark) 80%);
   color: white;
   text-align: center;
   overflow: hidden;
@@ -274,7 +273,6 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   opacity: 0.5;
 }
 

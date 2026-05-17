@@ -1,16 +1,11 @@
 import { Component, OnInit, OnDestroy, inject, signal, AfterViewInit, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
 import { SeoService } from '../../core/services/seo.service';
-import { DataService } from '../../core/services/data.service';
 import { ScrollService } from '../../core/services/scroll.service';
 import { SectionHeadingComponent } from '../../shared/section-heading/section-heading.component';
 import { StatsCounterComponent } from '../../shared/stats-counter/stats-counter.component';
-import { Notice } from '../../models/notice.model';
-import { SchoolEvent } from '../../models/event.model';
-import { Testimonial } from '../../models/testimonial.model';
-import { HOME_CONTENT } from '../../shared/constants';
+import { EVENTS_CONTENT, HOME_CONTENT, NOTICES_CONTENT } from '../../shared/constants';
 
 @Component({
   selector: 'app-home',
@@ -18,37 +13,32 @@ import { HOME_CONTENT } from '../../shared/constants';
   imports: [CommonModule, RouterLink, SectionHeadingComponent, StatsCounterComponent],
   template: `
     <!-- ===== HERO SECTION ===== -->
-    <section class="relative min-h-[90vh] flex items-center overflow-hidden" aria-label="Hero">
+    <section class="relative min-h-[90vh] flex items-center overflow-hidden" [attr.aria-label]="content.HERO.AREA_LABEL">
       <div class="absolute inset-0 gradient-dark"></div>
-      <div class="absolute inset-0 opacity-20"
-           [style.backgroundImage]="'url(' + content.HERO.BG_IMAGE + ')'"
-           style="background-size: cover; background-position: center;">
+      <div class="absolute inset-0 opacity-20" [style.backgroundImage]="'url(' + content.HERO.BG_IMAGE + ')'" style="background-size: cover; background-position: center;">
       </div>
       <div class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-transparent"></div>
-
       <div class="absolute top-20 right-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl animate-float"></div>
       <div class="absolute bottom-20 left-10 w-96 h-96 bg-primary-light/20 rounded-full blur-3xl"></div>
-
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div class="max-w-3xl">
-          <span class="inline-block px-4 py-2 rounded-full bg-accent/20 text-accent text-sm font-semibold mb-6 animate-fade-in">
+          <span class="inline-block px-4 py-2 rounded-full bg-red-500/10 text-red-600 text-md font-bold mb-6 animate-fade-in">
             {{ content.HERO.BADGE }}
           </span>
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white font-heading leading-tight mb-6 animate-fade-in-up">
             {{ content.HERO.TITLE_START }}
-            <span class="text-accent">{{ content.HERO.TITLE_ACCENT }}</span>
           </h1>
           <p class="text-lg sm:text-xl text-white/80 mb-8 leading-relaxed max-w-2xl animate-fade-in-up" style="animation-delay: 0.2s">
             {{ content.HERO.DESCRIPTION }}
           </p>
           <div class="flex flex-wrap gap-4 animate-fade-in-up" style="animation-delay: 0.4s">
-            <a routerLink="/admissions"
-               class="px-8 py-4 bg-accent text-white font-semibold rounded-xl hover:bg-accent-dark transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
-              Apply for Admission
+            <a [routerLink]="content.HERO.ACTION_BTN.routerLinka"
+               class="px-8 py-4 bg-red-600/10 text-white border border-white/20 font-semibold rounded-xl hover:bg-accent-dark transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+              {{ content.HERO.ACTION_BTN.APPLY }}
             </a>
-            <a routerLink="/about"
-               class="px-8 py-4 bg-white/10 text-white font-semibold rounded-xl backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300">
-              Explore Our School
+            <a [routerLink]="content.HERO.ACTION_BTN.routerLinke"
+               class="px-8 py-4 bg-white/10 text-white font-semibold rounded-xl backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+              {{ content.HERO.ACTION_BTN.EXPLORE }}
             </a>
           </div>
         </div>
@@ -62,22 +52,22 @@ import { HOME_CONTENT } from '../../shared/constants';
     </section>
 
     <!-- ===== QUICK LINKS ===== -->
-    <section class="relative -mt-16 z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Quick links">
+    <section class="relative bg-white -mt-16 z-10 max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8" [attr.aria-label]="content.QUICK_LINKS.AREA_LABEL">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        @for (link of content.QUICK_LINKS; track link.label) {
+        @for (link of content.QUICK_LINKS.LINK;  track $index; let i = $index) {
           <a [routerLink]="link.path"
-             class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+             class="bg-white border rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
             <div class="w-14 h-14 rounded-xl gradient-primary mx-auto mb-3 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
               {{ link.icon }}
             </div>
-            <h3 class="font-semibold text-dark text-sm">{{ link.label }}</h3>
+            <h3 class="font-semibold text-dark text-lg">{{ link.label }}</h3>
           </a>
         }
       </div>
     </section>
 
     <!-- ===== ABOUT INTRO ===== -->
-    <section class="section-padding" aria-label="School introduction">
+    <section class="bg-[#eef4ff] section-padding" [attr.aria-label]="content.ABOUT.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="reveal">
@@ -85,12 +75,12 @@ import { HOME_CONTENT } from '../../shared/constants';
               {{ content.ABOUT.BADGE }}
             </span>
             <h2 class="text-3xl md:text-4xl font-bold font-heading text-dark mb-6">
-              {{ content.ABOUT.TITLE_START }} <span class="text-primary">{{ content.ABOUT.TITLE_ACCENT }}</span>
+              {{ content.ABOUT.TITLE_START }}
             </h2>
             <p class="text-muted leading-relaxed mb-4">{{ content.ABOUT.DESC_1 }}</p>
             <p class="text-muted leading-relaxed mb-6">{{ content.ABOUT.DESC_2 }}</p>
             <div class="flex flex-wrap gap-4">
-              @for (feature of content.ABOUT.FEATURES; track feature) {
+              @for (feature of content.ABOUT.FEATURES; track $index; let i = $index) {
                 <div class="flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-accent"></span>
                   <span class="text-sm font-medium text-dark">{{ feature }}</span>
@@ -98,17 +88,16 @@ import { HOME_CONTENT } from '../../shared/constants';
               }
             </div>
             <a routerLink="/about" class="inline-flex items-center gap-2 mt-8 text-primary font-semibold hover:gap-3 transition-all">
-              Learn More About Us
+              {{content.ABOUT.LEARN_MORE}}
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
           </div>
           <div class="reveal-right">
             <div class="relative">
               <img [src]="content.ABOUT.IMAGE" [alt]="content.ABOUT.IMAGE_ALT"
-                   class="rounded-2xl shadow-2xl w-full object-cover"
-                   loading="lazy" decoding="async" fetchpriority="high">
+                   class="rounded-2xl shadow-2xl w-full object-cover" loading="lazy" decoding="async" fetchpriority="high">
               <div class="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl">
-                <div class="text-3xl font-bold font-heading">30+</div>
+                <div class="text-3xl font-bold font-heading">{{ content.ABOUT.YEARS }}</div>
                 <div class="text-sm opacity-90">{{ content.ABOUT.STATS_LABEL }}</div>
               </div>
             </div>
@@ -118,10 +107,10 @@ import { HOME_CONTENT } from '../../shared/constants';
     </section>
 
     <!-- ===== STATISTICS ===== -->
-    <section class="gradient-primary section-padding" aria-label="School statistics">
+    <section class="gradient-primary section-padding" [attr.aria-label]="content.STATS.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          @for (stat of content.STATS; track stat.label) {
+          @for (stat of content.STATS.STAT; track $index; let i = $index) {
             <app-stats-counter [targetValue]="stat.value" [label]="stat.label" />
           }
         </div>
@@ -129,14 +118,12 @@ import { HOME_CONTENT } from '../../shared/constants';
     </section>
 
     <!-- ===== PRINCIPAL'S MESSAGE ===== -->
-    <section class="section-padding bg-light" aria-label="Principal's message">
+    <section class="section-padding bg-light" [attr.aria-label]="content.PRINCIPAL.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="reveal-left order-2 lg:order-1">
             <div class="relative">
-              <img [src]="content.PRINCIPAL.IMAGE" [alt]="content.PRINCIPAL.NAME"
-                   class="rounded-2xl shadow-2xl w-full object-cover max-h-[500px]"
-                   loading="lazy" decoding="async" fetchpriority="high">
+              <img [src]="content.PRINCIPAL.IMAGE" [alt]="content.PRINCIPAL.NAME" class="rounded-2xl shadow-2xl w-full object-cover max-h-[500px]" loading="lazy" decoding="async" fetchpriority="high">
               <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-xl shadow-lg">
                 <p class="font-bold text-dark text-sm">{{ content.PRINCIPAL.NAME }}</p>
                 <p class="text-xs text-muted">{{ content.PRINCIPAL.ROLE }}</p>
@@ -148,7 +135,7 @@ import { HOME_CONTENT } from '../../shared/constants';
               {{ content.PRINCIPAL.BADGE }}
             </span>
             <h2 class="text-3xl md:text-4xl font-bold font-heading text-dark mb-6">
-              {{ content.PRINCIPAL.TITLE_START }} <span class="text-primary">{{ content.PRINCIPAL.TITLE_ACCENT }}</span>
+              {{ content.PRINCIPAL.TITLE_START }}
             </h2>
             <blockquote class="border-l-4 border-accent pl-6 mb-6">
               <p class="text-muted leading-relaxed italic text-lg">"{{ content.PRINCIPAL.QUOTE }}"</p>
@@ -161,15 +148,11 @@ import { HOME_CONTENT } from '../../shared/constants';
     </section>
 
     <!-- ===== ACHIEVEMENTS ===== -->
-    <section class="section-padding" aria-label="Achievements">
+    <section class="bg-[#eef4ff] section-padding" [attr.aria-label]="content.ACHIEVEMENTS.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <app-section-heading
-          [title]="content.ACHIEVEMENTS_HEADER.TITLE"
-          [subtitle]="content.ACHIEVEMENTS_HEADER.SUBTITLE"
-          [description]="content.ACHIEVEMENTS_HEADER.DESC"
-        />
+        <app-section-heading [title]="content.ACHIEVEMENTS.TITLE" [subtitle]="content.ACHIEVEMENTS.SUBTITLE" [description]="content.ACHIEVEMENTS.DESC"/>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          @for (achievement of content.ACHIEVEMENTS; track achievement.title) {
+          @for (achievement of content.ACHIEVEMENTS.ACHIEVEMENT_LIST; track $index; let i = $index) {
             <div class="reveal bg-white rounded-2xl p-8 shadow-md card-hover border border-gray-100">
               <div class="text-4xl mb-4">{{ achievement.icon }}</div>
               <h3 class="text-xl font-bold font-heading text-dark mb-2">{{ achievement.title }}</h3>
@@ -181,41 +164,33 @@ import { HOME_CONTENT } from '../../shared/constants';
     </section>
 
     <!-- ===== LATEST NOTICES ===== -->
-    <section class="section-padding bg-light" aria-label="Latest notices">
+    <section class="section-padding bg-light" [attr.aria-label]="content.NOTICES.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <app-section-heading
-          [title]="content.NOTICES_HEADER.TITLE"
-          [subtitle]="content.NOTICES_HEADER.SUBTITLE"
-          [description]="content.NOTICES_HEADER.DESC"
-        />
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          @for (notice of latestNotices(); track notice.id) {
-            <article class="reveal bg-white rounded-2xl p-6 shadow-md card-hover border border-gray-100">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="px-3 py-1 rounded-full text-xs font-semibold"
-                      [class]="notice.important ? 'bg-red-100 text-red-700' : 'bg-primary/10 text-primary'">
-                  {{ notice.category }}
-                </span>
-                <span class="text-xs text-muted">{{ notice.date }}</span>
-              </div>
-              <h3 class="text-lg font-bold font-heading text-dark mb-2 line-clamp-2">{{ notice.title }}</h3>
-              <p class="text-muted text-sm leading-relaxed line-clamp-3">{{ notice.content }}</p>
-            </article>
-          }
-        </div>
+        <app-section-heading [title]="content.NOTICES.TITLE" [subtitle]="content.NOTICES.SUBTITLE" [description]="content.NOTICES.DESC"/>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (notice of latestNotices; track $index; let i = $index) {
+          <article class="reveal bg-white rounded-2xl p-6 shadow-md card-hover border border-gray-100 group revealed">
+          <div class="flex items-center justify-between gap-3 mb-5">
+          <span class="px-3 py-1 rounded-xl text-xs font-bold uppercase tracking-wider"
+          [class]="notice.important ? 'bg-red-500/10 text-red-600' : 'bg-primary/10 text-primary'">
+          {{ notice.category }}
+          </span>
+          <span class="text-xs font-medium text-muted">{{ notice.date }}</span>
+          </div>
+          <h3 class="text-lg font-bold font-heading text-dark mb-3 line-clamp-2 hover:text-primary transition-colors cursor-pointer">{{ notice.title }}</h3>
+          <p class="text-muted text-sm leading-relaxed line-clamp-3">{{ notice.content }}</p>
+          </article>
+        }
+          </div>
       </div>
     </section>
 
     <!-- ===== UPCOMING EVENTS ===== -->
-    <section class="section-padding" aria-label="Upcoming events">
+    <section class="bg-[#eef4ff] section-padding" [attr.aria-label]="content.EVENTS.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <app-section-heading
-          [title]="content.EVENTS_HEADER.TITLE"
-          [subtitle]="content.EVENTS_HEADER.SUBTITLE"
-          [description]="content.EVENTS_HEADER.DESC"
-        />
+        <app-section-heading [title]="content.EVENTS.TITLE" [subtitle]="content.EVENTS.SUBTITLE" [description]="content.EVENTS.DESC" />
         <div class="grid md:grid-cols-2 gap-6">
-          @for (event of upcomingEvents(); track event.id) {
+          @for (event of upcomingEvents; track $index; let i = $index) {
             <article class="reveal bg-white rounded-2xl shadow-md card-hover border border-gray-100 overflow-hidden flex flex-col sm:flex-row">
               <div class="sm:w-32 gradient-primary flex flex-col items-center justify-center p-4 text-white shrink-0">
                 <span class="text-3xl font-bold font-heading">{{ getDay(event.date) }}</span>
@@ -246,35 +221,35 @@ import { HOME_CONTENT } from '../../shared/constants';
     </section>
 
     <!-- ===== TESTIMONIALS ===== -->
-    <section class="section-padding gradient-dark text-white" aria-label="Testimonials">
+    <section class="section-padding gradient-primary text-white" [attr.aria-label]="content.TESTIMONIALS.SUBTITLE">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
           <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-accent/20 text-accent mb-4">
-            {{ content.TESTIMONIALS_HEADER.SUBTITLE }}
+            {{ content.TESTIMONIALS.SUBTITLE }}
           </span>
-          <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">{{ content.TESTIMONIALS_HEADER.TITLE }}</h2>
-          <p class="text-white/70 max-w-2xl mx-auto text-lg">{{ content.TESTIMONIALS_HEADER.DESC }}</p>
+          <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">{{ content.TESTIMONIALS.TITLE }}</h2>
+          <p class="text-white/70 max-w-2xl mx-auto text-lg">{{ content.TESTIMONIALS.DESC }}</p>
         </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          @for (testimonial of testimonials(); track testimonial.id) {
-            <div class="reveal bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-              <div class="flex gap-1 mb-4">
-                @for (star of [1,2,3,4,5]; track star) {
-                  <svg class="w-5 h-5" [class]="star <= testimonial.rating ? 'text-accent' : 'text-white/20'" fill="currentColor" viewBox="0 0 20 20">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          @for (testimonial of content.TESTIMONIALS.TESTIMONIALS_LIST; track $index; let i = $index) {
+            <div class="reveal rounded-3xl p-8 border border-white card-hover flex flex-col justify-between">
+              <div>
+                <div class="flex gap-1 mb-5">
+                  @for (star of [1,2,3,4,5]; track $index; let i = $index) {
+                    <svg class="w-4 h-4" [class]="star <= testimonial.rating ? 'text-accent' : 'text-white/10'" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                  </svg>
-                }
-              </div>
-              <p class="text-white/80 text-sm leading-relaxed mb-5 italic">"{{ testimonial.quote }}"</p>
-              <div class="flex items-center gap-3">
-                <img [src]="testimonial.photo" [alt]="testimonial.name"
-                     class="w-11 h-11 rounded-full object-cover border-2 border-accent" loading="lazy" decoding="async" fetchpriority="high">
-                <div>
-                  <p class="font-semibold text-sm">{{ testimonial.name }}</p>
-                  <p class="text-xs text-white/60">{{ testimonial.role }}</p>
+                    </svg>
+                  }
                 </div>
+                <p class="text-white/90 text-sm leading-relaxed mb-6 italic font-medium">"{{ testimonial.quote }}"</p>
+            </div>
+            <div class="flex items-center gap-4 pt-4 border-t border-white/1">
+              <img [src]="testimonial.photo" [alt]="testimonial.name" class="w-12 h-12 rounded-full object-cover ring-2 ring-accent/50" loading="lazy" decoding="async" fetchpriority="high">
+              <div>
+                <p class="font-bold text-sm tracking-wide text-white">{{ testimonial.name }}</p>
+                <p class="text-xs text-white/60 mt-0.5">{{ testimonial.role }}</p>
               </div>
+            </div>
             </div>
           }
         </div>
@@ -282,7 +257,7 @@ import { HOME_CONTENT } from '../../shared/constants';
     </section>
 
     <!-- ===== CTA SECTION ===== -->
-    <section class="section-padding" aria-label="Call to action">
+    <section class="section-padding" [attr.aria-label]="content.CTA.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="reveal gradient-accent rounded-3xl p-10 md:p-16 text-center text-white relative overflow-hidden">
           <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
@@ -291,13 +266,13 @@ import { HOME_CONTENT } from '../../shared/constants';
             <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">{{ content.CTA.TITLE }}</h2>
             <p class="text-white/90 max-w-xl mx-auto mb-8 text-lg">{{ content.CTA.DESC }}</p>
             <div class="flex flex-wrap justify-center gap-4">
-              <a routerLink="/admissions"
-                 class="px-8 py-4 bg-white text-accent-dark font-bold rounded-xl hover:bg-white/90 transition-all shadow-lg hover:shadow-xl text-primry hover:-translate-y-1">
-                Apply Now
+              <a [routerLink]="content.CTA.ACTION_BTN.Applyl"
+                 class="px-8 py-4 text-red-600 bg-white font-bold rounded-xl hover:bg-white/9 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+                {{content.CTA.ACTION_BTN.Apply}}
               </a>
-              <a routerLink="/contact"
+              <a [routerLink]="content.CTA.ACTION_BTN.Contactl"
                  class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-xl hover:bg-white/10 transition-all">
-                Contact Us
+                {{content.CTA.ACTION_BTN.Contact}}
               </a>
             </div>
           </div>
@@ -308,18 +283,14 @@ import { HOME_CONTENT } from '../../shared/constants';
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly seo = inject(SeoService);
-  private readonly data = inject(DataService);
   private readonly scroll = inject(ScrollService);
   private readonly platformId = inject(PLATFORM_ID);
-
   readonly content = HOME_CONTENT;
-  latestNotices = signal<Notice[]>([]);
-  upcomingEvents = signal<SchoolEvent[]>([]);
-  testimonials = signal<Testimonial[]>([]);
+  latestNotices = this.content.NOTICES.NOTICE_LIST;
+  upcomingEvents= this.content.EVENTS.EVENT_LIST;
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.initSeo();
-    await this.loadData();
   }
 
   private initSeo(): void {
@@ -347,18 +318,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       },
       'foundingDate': SCHEMA.FOUNDED
     });
-  }
-
-  private async loadData(): Promise<void> {
-    const [notices, events, testimonials] = await Promise.all([
-      firstValueFrom(this.data.getNotices()),
-      firstValueFrom(this.data.getEvents()),
-      firstValueFrom(this.data.getTestimonials())
-    ]);
-
-    this.latestNotices.set(notices.slice(0, 3));
-    this.upcomingEvents.set(events.filter(e => new Date(e.date) >= new Date()).slice(0, 4));
-    this.testimonials.set(testimonials.slice(0, 3));
   }
 
   ngAfterViewInit(): void {

@@ -1,11 +1,8 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, inject, signal, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { firstValueFrom } from 'rxjs';
 import { SeoService } from '../../core/services/seo.service';
-import { DataService } from '../../core/services/data.service';
 import { ScrollService } from '../../core/services/scroll.service';
 import { SectionHeadingComponent } from '../../shared/section-heading/section-heading.component';
-import { SchoolEvent } from '../../models/event.model';
 import { EVENTS_CONTENT } from '../../shared/constants';
 
 @Component({
@@ -13,20 +10,20 @@ import { EVENTS_CONTENT } from '../../shared/constants';
   standalone: true,
   imports: [CommonModule, SectionHeadingComponent],
   template: `
-    <section class="page-banner">
+    <section class="page-banner" [attr.aria-label]="content.BANNER.AREA_LABEL">
       <h1 class="font-heading">{{ content.BANNER.TITLE }}</h1>
       <p>{{ content.BANNER.SUBTITLE }}</p>
     </section>
 
     @if (featuredEvent()) {
-      <section class="section-padding bg-light">
+      <section class="section-padding bg-light" [attr.aria-label]="content.FEATURED.AREA_LABEL">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="reveal gradient-primary rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
             <div class="relative grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <span class="inline-block px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-semibold mb-4">
-                  {{ content.FEATURED_LABEL }}
+                  {{ content.FEATURED.FEATURED_LABEL }}
                 </span>
                 <h2 class="text-2xl md:text-3xl font-bold font-heading mb-3">{{ featuredEvent()!.title }}</h2>
                 <p class="text-white/80 text-sm mb-4">{{ featuredEvent()!.description }}</p>
@@ -37,7 +34,7 @@ import { EVENTS_CONTENT } from '../../shared/constants';
                 </div>
               </div>
               <div class="flex justify-center md:justify-end gap-4">
-                @for (unit of countdownUnits(); track unit.label) {
+                @for (unit of countdownUnits(); track $index; let i = $index) {
                   <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 min-w-[80px] text-center border border-white/10">
                     <div class="text-3xl font-bold font-heading">{{ unit.value }}</div>
                     <div class="text-xs text-white/60 uppercase mt-1">{{ unit.label }}</div>
@@ -50,16 +47,11 @@ import { EVENTS_CONTENT } from '../../shared/constants';
       </section>
     }
 
-    <section class="section-padding">
+    <section class="section-padding bg-[#eef4ff]" [attr.aria-label]="content.EVENTS.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <app-section-heading 
-          [title]="content.CALENDAR_HEADER.TITLE" 
-          [subtitle]="content.CALENDAR_HEADER.SUBTITLE" 
-          [description]="content.CALENDAR_HEADER.DESC" 
-        />
-
+        <app-section-heading [title]="content.EVENTS.TITLE" [subtitle]="content.EVENTS.SUBTITLE" [description]="content.EVENTS.DESC"/>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          @for (event of events(); track event.id) {
+          @for (event of events; track $index; let i = $index) {
             <article class="reveal bg-white rounded-2xl shadow-md card-hover border border-gray-100 overflow-hidden">
               <div class="gradient-primary p-4 text-white text-center">
                 <div class="text-3xl font-bold font-heading">{{ getDay(event.date) }}</div>
@@ -92,25 +84,20 @@ import { EVENTS_CONTENT } from '../../shared/constants';
 })
 export class EventsComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly seo = inject(SeoService);
-  private readonly data = inject(DataService);
   private readonly scroll = inject(ScrollService);
   private readonly platformId = inject(PLATFORM_ID);
-
   readonly content = EVENTS_CONTENT;
-  readonly events = signal<SchoolEvent[]>([]);
-  readonly featuredEvent = signal<SchoolEvent | null>(null);
+  readonly events =  this.content.EVENTS.EVENTS_LIST;
+  readonly featuredEvent = signal<any | null>(null);
   readonly countdownUnits = signal<{ label: string; value: number }[]>([]);
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit():void {
     this.seo.updatePageMeta({
       title: this.content.SEO.TITLE,
       description: this.content.SEO.DESCRIPTION,
       canonicalPath: this.content.SEO.PATH
     });
-
-    const events = await firstValueFrom(this.data.getEvents());
-    this.events.set(events);
-    const featured = events.find(e => e.featured);
+    const featured = this.events.find(e => e.featured);
     if (featured) {
       this.featuredEvent.set(featured);
       this.updateCountdown(featured.date);

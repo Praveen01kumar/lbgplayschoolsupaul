@@ -11,7 +11,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
         data: {
           title: 'Home',
-          description: 'Welcome to Greenfield International Academy - A premier institution committed to academic excellence, holistic development, and nurturing future leaders since 1995.'
+          description: 'Welcome to Little Buds Garden Play School - A premier institution committed to academic excellence, holistic development, and nurturing future leaders since 1995.'
         }
       },
       {
@@ -19,7 +19,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent),
         data: {
           title: 'About Us',
-          description: 'Learn about Greenfield International Academy\'s rich history, vision, mission, campus, and values that have shaped excellence in education since 1995.'
+          description: 'Learn about Little Buds Garden Play School\'s rich history, vision, mission, campus, and values that have shaped excellence in education since 1995.'
         }
       },
       {
@@ -27,7 +27,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/admissions/admissions.component').then(m => m.AdmissionsComponent),
         data: {
           title: 'Admissions',
-          description: 'Apply for admission to Greenfield International Academy. Learn about our admission process, eligibility criteria, and fee structure.'
+          description: 'Apply for admission to Little Buds Garden Play School. Learn about our admission process, eligibility criteria, and fee structure.'
         }
       },
       {
@@ -51,7 +51,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/gallery/gallery.component').then(m => m.GalleryComponent),
         data: {
           title: 'Gallery',
-          description: 'Browse through photos of our campus, events, sports activities, and cultural programs at Greenfield International Academy.'
+          description: 'Browse through photos of our campus, events, sports activities, and cultural programs at Little Buds Garden Play School.'
         }
       },
       {
@@ -59,7 +59,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/events/events.component').then(m => m.EventsComponent),
         data: {
           title: 'Events',
-          description: 'Stay updated with upcoming and past events at Greenfield International Academy including sports, cultural festivals, and academic programs.'
+          description: 'Stay updated with upcoming and past events at Little Buds Garden Play School including sports, cultural festivals, and academic programs.'
         }
       },
       {
@@ -67,7 +67,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/notices/notices.component').then(m => m.NoticesComponent),
         data: {
           title: 'Notices',
-          description: 'View the latest notices and announcements from Greenfield International Academy.'
+          description: 'View the latest notices and announcements from Little Buds Garden Play School.'
         }
       },
       {
@@ -75,7 +75,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactComponent),
         data: {
           title: 'Contact Us',
-          description: 'Get in touch with Greenfield International Academy. Find our address, phone numbers, email, and send us a message.'
+          description: 'Get in touch with Little Buds Garden Play School. Find our address, phone numbers, email, and send us a message.'
         }
       },
       {

@@ -11,8 +11,8 @@ export class SeoService {
   private readonly document = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);
 
-  private readonly siteName = 'Greenfield International Academy';
-  private readonly siteUrl = 'https://greenfieldacademy.edu';
+  private readonly siteName = 'Little Buds Garden Play School';
+  private readonly siteUrl = 'https://littlebudsgardenplayschool.in';
 
   updatePageMeta(config: {
     title: string;
@@ -22,31 +22,21 @@ export class SeoService {
     canonicalPath?: string;
   }): void {
     const fullTitle = `${config.title} | ${this.siteName}`;
-
     // Title
     this.title.setTitle(fullTitle);
-
     // Standard meta tags
     this.meta.updateTag({ name: 'description', content: config.description });
-    if (config.keywords) {
-      this.meta.updateTag({ name: 'keywords', content: config.keywords });
-    }
-
+    if (config.keywords) {this.meta.updateTag({ name: 'keywords', content: config.keywords });}
     // Open Graph tags
     this.meta.updateTag({ property: 'og:title', content: fullTitle });
     this.meta.updateTag({ property: 'og:description', content: config.description });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({ property: 'og:site_name', content: this.siteName });
-
-    if (config.ogImage) {
-      this.meta.updateTag({ property: 'og:image', content: config.ogImage });
-    }
-
+    if (config.ogImage) {      this.meta.updateTag({ property: 'og:image', content: config.ogImage });    }
     // Twitter Card tags
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: fullTitle });
     this.meta.updateTag({ name: 'twitter:description', content: config.description });
-
     // Canonical URL
     if (config.canonicalPath && isPlatformBrowser(this.platformId)) {
       this.updateCanonicalUrl(`${this.siteUrl}${config.canonicalPath}`);

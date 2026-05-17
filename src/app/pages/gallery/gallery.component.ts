@@ -1,11 +1,8 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, inject, signal, PLATFORM_ID, computed } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { firstValueFrom } from 'rxjs';
 import { SeoService } from '../../core/services/seo.service';
-import { DataService } from '../../core/services/data.service';
 import { ScrollService } from '../../core/services/scroll.service';
 import { SectionHeadingComponent } from '../../shared/section-heading/section-heading.component';
-import { GalleryItem } from '../../models/gallery.model';
 import { GALLERY_CONTENT } from '../../shared/constants';
 
 @Component({
@@ -13,31 +10,26 @@ import { GALLERY_CONTENT } from '../../shared/constants';
   standalone: true,
   imports: [CommonModule, SectionHeadingComponent],
   template: `
-    <section class="page-banner">
+    <section class="page-banner" [attr.aria-label]="content.BANNER.AREA_LABEL">
       <h1 class="font-heading">{{ content.BANNER.TITLE }}</h1>
       <p>{{ content.BANNER.SUBTITLE }}</p>
     </section>
 
-    <section class="section-padding">
+    <section class="section-padding" [attr.aria-label]="content.HEADER.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <app-section-heading 
-          [title]="content.HEADER.TITLE" 
-          [subtitle]="content.HEADER.SUBTITLE" 
-          [description]="content.HEADER.DESC" 
-        />
-
+        <app-section-heading [title]="content.HEADER.TITLE" [subtitle]="content.HEADER.SUBTITLE" [description]="content.HEADER.DESC"/>
         <div class="flex flex-wrap justify-center gap-3 mb-10">
-          @for (cat of content.CATEGORIES; track cat) {
+          @for (cat of content.CATEGORIES; track $index; let i = $index) {
             <button (click)="selectedCategory.set(cat)"
               class="px-5 py-2 rounded-full text-sm font-medium transition-all"
-              [class]="selectedCategory() === cat ? 'bg-primary text-white shadow-md' : 'bg-gray-100 text-muted hover:bg-gray-200'">
+              [class]="selectedCategory() === cat ? 'text-red-600 bg-red-500/10 shadow-lg' : 'bg-gray-100 text-muted hover:bg-gray-200'">
               {{ cat }}
             </button>
           }
         </div>
 
         <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-          @for (item of filteredGallery(); track item.id) {
+          @for (item of filteredGallery(); track $index; let i = $index) {
             <div class="reveal break-inside-avoid bg-white rounded-2xl shadow-md overflow-hidden card-hover group cursor-pointer" (click)="openLightbox(item)">
               <div class="relative overflow-hidden">
                 <img [src]="item.thumbnail" [alt]="item.title" class="w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" fetchpriority="high">
@@ -58,7 +50,9 @@ import { GALLERY_CONTENT } from '../../shared/constants';
     @if (lightboxItem()) {
       <div class="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 animate-fade-in" (click)="closeLightbox()" role="dialog" aria-label="Image preview">
         <button class="absolute top-4 right-4 text-white hover:text-accent transition-colors p-2" aria-label="Close lightbox">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
         </button>
         <div (click)="$event.stopPropagation()" class="max-w-5xl w-full">
           <img [src]="lightboxItem()!.image" [alt]="lightboxItem()!.title" class="w-full max-h-[80vh] object-contain rounded-xl" loading="lazy" decoding="async" fetchpriority="high">
@@ -73,34 +67,29 @@ import { GALLERY_CONTENT } from '../../shared/constants';
 })
 export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly seo = inject(SeoService);
-  private readonly data = inject(DataService);
   private readonly scroll = inject(ScrollService);
   private readonly platformId = inject(PLATFORM_ID);
-
   readonly content = GALLERY_CONTENT;
-  readonly allGallery = signal<GalleryItem[]>([]);
+  allGallery = this.content.GALLERY_LIST;
   readonly selectedCategory = signal('All');
-  readonly lightboxItem = signal<GalleryItem | null>(null);
+  readonly lightboxItem = signal<any | null>(null);
 
   readonly filteredGallery = computed(() => {
     const category = this.selectedCategory();
-    const items = this.allGallery();
+    const items = this.allGallery;
     return category === 'All' ? items : items.filter(g => g.category === category);
   });
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     const { SEO } = this.content;
     this.seo.updatePageMeta({
       title: SEO.TITLE,
       description: SEO.DESCRIPTION,
       canonicalPath: SEO.PATH
     });
-
-    const items = await firstValueFrom(this.data.getGallery());
-    this.allGallery.set(items);
   }
 
-  openLightbox(item: GalleryItem): void {
+  openLightbox(item: any): void {
     this.lightboxItem.set(item);
   }
 

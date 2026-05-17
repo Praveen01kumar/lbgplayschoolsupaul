@@ -1,12 +1,9 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, inject, signal, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { firstValueFrom } from 'rxjs';
 import { SeoService } from '../../core/services/seo.service';
-import { DataService } from '../../core/services/data.service';
 import { ScrollService } from '../../core/services/scroll.service';
 import { SectionHeadingComponent } from '../../shared/section-heading/section-heading.component';
-import { FAQ } from '../../models/faq.model';
 import { ADMISSIONS_CONTENT } from '../../shared/constants';
 
 @Component({
@@ -14,20 +11,16 @@ import { ADMISSIONS_CONTENT } from '../../shared/constants';
   standalone: true,
   imports: [CommonModule, FormsModule, SectionHeadingComponent],
   template: `
-    <section class="page-banner">
+    <section class="page-banner" [attr.aria-label]="content.BANNER.AREA_LABEL">
       <h1 class="font-heading">{{ content.BANNER.TITLE }}</h1>
       <p>{{ content.BANNER.SUBTITLE }}</p>
     </section>
 
-    <section class="section-padding">
+    <section class="section-padding" [attr.aria-label]="content.PROCESS.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <app-section-heading 
-          [title]="content.PROCESS_HEADER.TITLE" 
-          [subtitle]="content.PROCESS_HEADER.SUBTITLE" 
-          [description]="content.PROCESS_HEADER.DESC" 
-        />
+        <app-section-heading [title]="content.PROCESS.TITLE" [subtitle]="content.PROCESS.SUBTITLE" [description]="content.PROCESS.DESC" />
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          @for (step of content.STEPS; track step.number) {
+          @for (step of content.PROCESS.STEPS; track $index; let i = $index) {
             <div class="reveal bg-white rounded-2xl p-6 shadow-md card-hover border border-gray-100 text-center relative">
               <div class="w-14 h-14 rounded-full gradient-primary text-white text-xl font-bold flex items-center justify-center mx-auto mb-4">
                 {{ step.number }}
@@ -40,12 +33,9 @@ import { ADMISSIONS_CONTENT } from '../../shared/constants';
       </div>
     </section>
 
-    <section class="section-padding bg-light">
+    <section class="section-padding bg-[#eef4ff]" [attr.aria-label]="content.ELIGIBILITY.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <app-section-heading 
-          [title]="content.ELIGIBILITY_HEADER.TITLE" 
-          [subtitle]="content.ELIGIBILITY_HEADER.SUBTITLE" 
-        />
+        <app-section-heading [title]="content.ELIGIBILITY.TITLE" [subtitle]="content.ELIGIBILITY.SUBTITLE" />
         <div class="reveal max-w-4xl mx-auto bg-white rounded-2xl shadow-md overflow-hidden">
           <table class="w-full text-sm">
             <thead>
@@ -56,7 +46,7 @@ import { ADMISSIONS_CONTENT } from '../../shared/constants';
               </tr>
             </thead>
             <tbody>
-              @for (row of content.ELIGIBILITY_TABLE; track row.grade) {
+              @for (row of content.ELIGIBILITY.ELIGIBILITY_TABLE; track $index; let i = $index) {
                 <tr class="border-b border-gray-100 hover:bg-gray-50">
                   <td class="px-6 py-4 font-medium text-dark">{{ row.grade }}</td>
                   <td class="px-6 py-4 text-muted">{{ row.age }}</td>
@@ -69,28 +59,27 @@ import { ADMISSIONS_CONTENT } from '../../shared/constants';
       </div>
     </section>
 
-    <section class="section-padding">
+    <section class="section-padding" [attr.aria-label]="content.PROSPECTUS.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="reveal gradient-primary rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden">
           <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
           <h2 class="text-3xl font-bold font-heading mb-4 relative">{{ content.PROSPECTUS.TITLE }}</h2>
           <p class="text-white/80 max-w-xl mx-auto mb-8 relative">{{ content.PROSPECTUS.DESC }}</p>
           <button class="relative px-8 py-4 bg-accent text-white font-bold rounded-xl hover:bg-accent-dark transition-all shadow-lg inline-flex items-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17v3a2 2 0 002 2h14a2 2 0 002-2v-3"/></svg>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17v3a2 2 0 002 2h14a2 2 0 002-2v-3"/>
+            </svg>
             {{ content.PROSPECTUS.BUTTON_TEXT }}
           </button>
         </div>
       </div>
     </section>
 
-    <section class="section-padding bg-light">
+    <section class="section-padding bg-[#eef4ff]" [attr.aria-label]="content.FAQS.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <app-section-heading 
-          [title]="content.FAQ_HEADER.TITLE" 
-          [subtitle]="content.FAQ_HEADER.SUBTITLE" 
-        />
+        <app-section-heading [title]="content.FAQS.TITLE" [subtitle]="content.FAQS.SUBTITLE"/>
         <div class="max-w-3xl mx-auto space-y-4">
-          @for (faq of faqs(); track faq.id) {
+          @for (faq of content.FAQS.FAQ_LIST; track $index; let i = $index) {
             <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
               <button class="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-gray-50 transition-colors" 
                 (click)="toggleFaq(faq.id)" 
@@ -109,49 +98,46 @@ import { ADMISSIONS_CONTENT } from '../../shared/constants';
       </div>
     </section>
 
-    <section class="section-padding">
+    <section class="section-padding" [attr.aria-label]="content.INQUIRY.HEADER.AREA_LABEL">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <app-section-heading 
-          [title]="content.INQUIRY_HEADER.TITLE" 
-          [subtitle]="content.INQUIRY_HEADER.SUBTITLE" 
-        />
+        <app-section-heading [title]="content.INQUIRY.HEADER.TITLE" [subtitle]="content.INQUIRY.HEADER.SUBTITLE" />
         <div class="reveal max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
           <form action="https://formspree.io/f/xexample" method="POST" class="space-y-5">
             <div class="grid sm:grid-cols-2 gap-5">
               <div>
-                <label for="pname" class="block text-sm font-medium text-dark mb-1.5">Parent Name *</label>
-                <input type="text" id="pname" name="parent_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm">
+                <label for="pname" class="block text-sm font-medium text-dark mb-1.5">{{content.INQUIRY.FORM.PARENT_NAME_LABEL}}</label>
+                <input type="text" id="pname" name="parent_name" required [placeholder]="content.INQUIRY.FORM.PARENT_NAME_PLACEHOLDER" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm">
               </div>
               <div>
-                <label for="sname" class="block text-sm font-medium text-dark mb-1.5">Student Name *</label>
-                <input type="text" id="sname" name="student_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm">
+                <label for="sname" class="block text-sm font-medium text-dark mb-1.5">{{content.INQUIRY.FORM.STUDENT_NAME_LABEL}}</label>
+                <input type="text" id="sname" name="student_name" required [placeholder]="content.INQUIRY.FORM.STUDENT_NAME_PLACEHOLDER" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm">
               </div>
             </div>
             <div class="grid sm:grid-cols-2 gap-5">
               <div>
-                <label for="iemail" class="block text-sm font-medium text-dark mb-1.5">Email *</label>
-                <input type="email" id="iemail" name="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm">
+                <label for="iemail" class="block text-sm font-medium text-dark mb-1.5">{{content.INQUIRY.FORM.EMAIL_LABEL}}</label>
+                <input type="email" id="iemail" name="email" required [placeholder]="content.INQUIRY.FORM.EMAIL_PLACEHOLDER" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm">
               </div>
               <div>
-                <label for="iphone" class="block text-sm font-medium text-dark mb-1.5">Phone *</label>
-                <input type="tel" id="iphone" name="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm">
+                <label for="iphone" class="block text-sm font-medium text-dark mb-1.5">{{content.INQUIRY.FORM.PHONE_LABEL}}</label>
+                <input type="tel" id="iphone" name="phone" required [placeholder]="content.INQUIRY.FORM.PHONE_PLACEHOLDER" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm">
               </div>
             </div>
             <div>
-              <label for="igrade" class="block text-sm font-medium text-dark mb-1.5">Grade Applying For</label>
+              <label for="igrade" class="block text-sm font-medium text-dark mb-1.5">{{content.INQUIRY.FORM.GRADE_LABEL}}</label>
               <select id="igrade" name="grade" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm bg-white">
-                <option value="">Select Grade</option>
-                <option>Nursery</option>
-                <option>KG</option>
-                @for(g of [1,2,3,4,5,6,7,8,9,10,11,12]; track g){<option>Grade {{g}}</option>}
+                <option value="">{{content.INQUIRY.FORM.GRADE_PLACEHOLDER}}</option>
+                <option>{{content.INQUIRY.FORM.NURSERY}}</option>
+                <option>{{content.INQUIRY.FORM.KG}}</option>
+                @for(g of [1,2,3,4,5,6,7,8]; track $index; let i = $index){<option>Grade {{g}}</option>}
               </select>
             </div>
             <div>
-              <label for="imsg" class="block text-sm font-medium text-dark mb-1.5">Message</label>
-              <textarea id="imsg" name="message" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm resize-none"></textarea>
+              <label for="imsg" class="block text-sm font-medium text-dark mb-1.5">{{content.INQUIRY.FORM.MESSAGE_LABEL}}</label>
+              <textarea id="imsg" name="message" rows="4" [placeholder]="content.INQUIRY.FORM.MESSAGE_PLACEHOLDER" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm resize-none"></textarea>
             </div>
-            <button type="submit" class="w-full px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all shadow-md">
-              Submit Inquiry
+            <button type="submit" class="w-full px-8 py-4 bg-red-500/10 text-red-600 font-bold rounded-xl hover:bg-primary-dark transition-all shadow-lg shadow-primary/20">
+              {{content.INQUIRY.FORM.SUBMIT_BUTTON}}
             </button>
           </form>
         </div>
@@ -161,23 +147,18 @@ import { ADMISSIONS_CONTENT } from '../../shared/constants';
 })
 export class AdmissionsComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly seo = inject(SeoService);
-  private readonly data = inject(DataService);
   private readonly scroll = inject(ScrollService);
   private readonly platformId = inject(PLATFORM_ID);
-
   readonly content = ADMISSIONS_CONTENT;
-  readonly faqs = signal<FAQ[]>([]);
   readonly openFaqId = signal<number | null>(null);
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit():void {
     const { SEO } = this.content;
     this.seo.updatePageMeta({
       title: SEO.TITLE,
       description: SEO.DESCRIPTION,
       canonicalPath: SEO.PATH
     });
-    const faqs = await firstValueFrom(this.data.getFaq());
-    this.faqs.set(faqs);
   }
 
   ngAfterViewInit(): void {
